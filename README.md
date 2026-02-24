@@ -70,3 +70,8 @@ filterButtons.forEach(button => {
         });
     });
 });
+```
+
+<div align="center">
+<p><b>CodEX Town</b> tarafından yaratıcılık ve tutkuyla kodlanmıştır.</p>
+</div>
