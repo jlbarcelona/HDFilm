@@ -1,0 +1,2955 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateUrl='indie.xml' b:templateVersion='1.3.0' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+
+<head>
+
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'/>
+
+    <b:include data='blog' name='all-head-content'/>
+
+    <title><data:blog.pageTitle/></title>
+
+    
+
+    <link href='https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&amp;display=swap' rel='stylesheet'/>
+
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css' rel='stylesheet'/>
+
+
+
+    <b:skin><![CDATA[
+
+/* Kaydırma çubuğunun bütünü */
+::-webkit-scrollbar {
+  width: 5px;               /* Çubuğun genişliği */
+}
+
+/* Kaydırma çubuğunun arka planı (yolu) */
+::-webkit-scrollbar-track {
+  background: #141414;      /* Açık gri arka plan */
+}
+
+/* Hareket eden tutamaç kısmı */
+::-webkit-scrollbar-thumb {
+  background: #ff0000;         /* Koyu gri tutamaç */
+  border-radius: 10px;      /* Köşeleri yuvarlar */
+}
+
+/* Tutamaç üzerine gelince rengi değiştirme */
+::-webkit-scrollbar-thumb:hover {
+  background: red;         /* Üzerine gelince daha koyu olur */
+}
+
+
+    /* --- ULTIMATE CSS DEĞİŞKENLERİ --- */
+
+    :root { 
+
+        --primary: #E50914; 
+
+        --primary-glow: rgba(229, 9, 20, 0.5);
+
+        --dizi-color: #9b59b6; 
+
+        --bg-body: #141414; 
+
+        --bg-card: #1f1f1f;
+
+        --bg-glass: rgba(20, 20, 20, 0.95); 
+
+        --text-main: #f5f5f5;
+
+        --text-sec: #b0b0b0;
+
+        --radius: 12px;
+
+        --header-h: 80px; 
+
+    }
+
+
+
+    body { background-color: var(--bg-body); color: var(--text-main); font-family: 'Outfit', sans-serif; margin: 0; padding: 0; padding-top: var(--header-h); -webkit-font-smoothing: antialiased; position: relative;}
+
+    a { text-decoration: none; color: inherit; transition: 0.3s ease; }
+
+    ul { list-style: none; padding: 0; margin: 0; }
+
+    * { box-sizing: border-box; outline: none; }
+
+    
+
+    /* --- HEADER --- */
+
+    header { 
+
+        background: var(--bg-glass); 
+
+        height: var(--header-h); 
+
+        padding: 0 4%; 
+
+        position: fixed; top: 0; left: 0; right: 0; 
+
+        z-index: 9999; 
+
+        display: flex; align-items: center; justify-content: space-between; 
+
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+
+        box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+
+        backdrop-filter: blur(10px);
+
+    }
+
+    
+
+    .logo h1 { font-size: 26px; color: var(--primary); text-transform: uppercase; font-weight: 800; letter-spacing: -0.5px; margin: 0; text-shadow: 0 0 25px var(--primary-glow); }
+
+    
+
+    /* --- YENİ MENÜ SİSTEMİ --- */
+
+    .nav-menu { height: 100%; display: flex; align-items: center; }
+
+    .nav-list { display: flex; gap: 5px; height: 100%; align-items: center; }
+
+    
+
+    .nav-item { position: relative; height: 100%; display: flex; align-items: center; }
+
+    
+
+    .nav-link { 
+
+        padding: 0 15px; 
+
+        height: 100%;
+
+        display: flex; align-items: center; gap: 8px;
+
+        font-size: 14px; font-weight: 600; color: #ccc; 
+
+        text-transform: uppercase; letter-spacing: 0.5px;
+
+        transition: 0.3s;
+
+        border-bottom: 2px solid transparent;
+
+    }
+
+    
+
+    .nav-link i { font-size: 12px; color: #666; transition: 0.3s; }
+
+    
+
+    .nav-item:hover .nav-link { color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+
+    .nav-item:hover .nav-link i { color: var(--primary); }
+
+    
+
+    /* DROPDOWN (AÇILIR MENÜ) */
+
+    .dropdown {
+
+        position: absolute;
+
+        top: 100%; left: 0;
+
+        width: 220px;
+
+        background: var(--bg-card);
+
+        border: 1px solid rgba(255,255,255,0.1);
+
+        border-top: 3px solid var(--primary);
+
+        border-radius: 0 0 12px 12px;
+
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+
+        opacity: 0; visibility: hidden;
+
+        transform: translateY(10px);
+
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+
+        padding: 10px 0;
+
+        z-index: 100;
+
+    }
+
+    
+
+    .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+
+    
+
+    .dropdown li a {
+
+        display: block;
+
+        padding: 10px 20px;
+
+        font-size: 13px; font-weight: 500; color: #bbb;
+
+        border-left: 3px solid transparent;
+
+    }
+
+    
+
+    .dropdown li a:hover {
+
+        background: rgba(255,255,255,0.05);
+
+        color: #fff;
+
+        border-left-color: var(--primary);
+
+        padding-left: 25px;
+
+    }
+
+
+
+    /* ARAMA VE SAĞ ALAN - GÜNCELLENMİŞ */
+
+    .right-area { display: flex; align-items: center; gap: 15px; position: relative; }
+
+
+
+    .classic-search-box {
+
+        position: relative;
+
+        width: 250px;
+
+        height: 40px;
+
+        background: rgba(255,255,255,0.1);
+
+        border-radius: 50px;
+
+        border: 1px solid rgba(255,255,255,0.1);
+
+        transition: 0.3s;
+
+        display: flex; align-items: center;
+
+        z-index: 10001; /* Sonuçlar için üstte kalmalı */
+
+    }
+
+    .classic-search-box:focus-within {
+
+        background: rgba(0,0,0,0.5);
+
+        border-color: var(--primary);
+
+        width: 300px;
+
+        box-shadow: 0 0 15px rgba(229,9,20,0.2);
+
+    }
+
+    .classic-search-box form { width: 100%; height: 100%; display: flex; }
+
+    .classic-search-box input {
+
+        width: 100%; height: 100%;
+
+        background: transparent; border: none;
+
+        padding: 0 15px; color: #fff; font-size: 13px;
+
+        font-family: inherit;
+
+    }
+
+    .classic-search-box button {
+
+        background: transparent; border: none;
+
+        color: #aaa; padding-right: 15px; cursor: pointer;
+
+        font-size: 14px; transition: 0.3s;
+
+    }
+
+    .classic-search-box button:hover { color: var(--primary); }
+
+    
+
+    /* CANLI ARAMA SONUÇLARI TASARIMI */
+
+    .search-results-box {
+
+        position: absolute;
+
+        top: 100%;
+
+        right: 0; /* Sağa yaslı */
+
+        width: 300px;
+
+        background: #1a1a1a;
+
+        border: 1px solid rgba(255,255,255,0.1);
+
+        border-radius: 0 0 12px 12px;
+
+        box-shadow: 0 15px 40px rgba(0,0,0,0.9);
+
+        z-index: 9999;
+
+        margin-top: 5px;
+
+        max-height: 0;
+
+        overflow: hidden;
+
+        opacity: 0;
+
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+    }
+
+    
+
+    .search-results-box.active {
+
+        max-height: 400px;
+
+        opacity: 1;
+
+        padding: 10px 0;
+
+        overflow-y: auto;
+
+    }
+
+    
+
+    .live-item {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 12px;
+
+        padding: 10px 15px;
+
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+
+        cursor: pointer;
+
+        transition: 0.2s;
+
+        text-decoration: none;
+
+    }
+
+    .live-item:last-child { border-bottom: none; }
+
+    .live-item:hover { background: rgba(255,255,255,0.1); padding-left:20px; }
+
+    
+
+    .live-thumb {
+
+        width: 45px; height: 65px;
+
+        border-radius: 4px;
+
+        object-fit: cover;
+
+        background: #333;
+
+        flex-shrink: 0;
+
+    }
+
+    
+
+    .live-info { flex: 1; overflow: hidden; }
+
+    .live-title {
+
+        font-size: 13px; color: #fff; font-weight: 600;
+
+        margin-bottom: 3px;
+
+        white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+
+    }
+
+    .live-meta { font-size: 10px; color: var(--primary); font-weight: 700; text-transform: uppercase; }
+
+    .live-loading { padding: 15px; text-align: center; color: #888; font-size: 12px; }
+
+
+
+    .menu-toggle { display: none; font-size: 24px; cursor: pointer; color: #fff; }
+
+
+
+    /* --- SLIDER --- */
+
+    .main-slider { 
+
+        position: relative; 
+
+        width: 100%; 
+
+        height: 75vh; 
+
+        margin-top: 0; 
+
+        margin-bottom: 40px; 
+
+        overflow: hidden; 
+
+        z-index: 1; 
+
+        mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+
+        -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+
+    }
+
+    
+
+    .slider-wrapper { display: flex; width: 100%; height: 100%; transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1); cursor: grab; }
+
+    .slide-item { min-width: 100%; height: 100%; position: relative; overflow: hidden; }
+
+    
+
+    @keyframes zoomEffect {
+
+        0% { transform: scale(1); }
+
+        100% { transform: scale(1.15); }
+
+    }
+
+    
+
+    .slide-bg { 
+
+        width: 100%; height: 100%; object-fit: cover; 
+
+        position: absolute; top: 0; left: 0; z-index: 1; 
+
+        animation: zoomEffect 20s infinite alternate linear; 
+
+    }
+
+    
+
+    .slide-overlay { 
+
+        position: absolute; inset: 0; 
+
+        background: radial-gradient(circle at 70% 50%, transparent 0%, rgba(20,20,20,0.6) 50%, var(--bg-body) 100%),
+
+                    linear-gradient(to top, var(--bg-body) 10%, rgba(20,20,20,0.6) 40%, transparent 100%);
+
+        z-index: 2; 
+
+    }
+
+    
+
+    .slide-content { 
+
+        position: absolute; bottom: 120px; left: 6%; z-index: 3; 
+
+        max-width: 700px; opacity: 0; transform: translateY(30px); 
+
+        transition: 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.3s; 
+
+    }
+
+    .slide-item.active .slide-content { opacity: 1; transform: translateY(0); }
+
+    
+
+    .slide-meta { display: flex; gap: 12px; align-items: center; margin-bottom: 20px; opacity: 0; transform: translateY(20px); transition: 0.8s ease 0.4s; }
+
+    .slide-item.active .slide-meta { opacity: 1; transform: translateY(0); }
+
+    
+
+    .slide-badge { 
+
+        background: rgba(255,255,255,0.15); color: #fff; padding: 5px 12px; 
+
+        font-size: 11px; font-weight: 700; border-radius: 4px; 
+
+        backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.1);
+
+        text-transform: uppercase; letter-spacing: 0.5px;
+
+    }
+
+    .slide-rating { 
+
+        color: #f5c518; font-weight: 800; font-size: 16px; 
+
+        display: flex; align-items: center; gap: 6px; 
+
+        text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+
+    }
+
+    .slide-genre { color: #ddd; font-size: 15px; font-weight: 600; text-transform: capitalize; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
+
+    
+
+    .slide-title { 
+
+        font-size: 4.5rem; margin: 0 0 20px 0; line-height: 1; 
+
+        font-weight: 900; color: #fff;
+
+        text-shadow: 0 10px 40px rgba(0,0,0,0.9); letter-spacing: -2px; 
+
+        opacity: 0; transform: translateY(20px); transition: 0.8s ease 0.5s;
+
+    }
+
+    .slide-item.active .slide-title { opacity: 1; transform: translateY(0); }
+
+    
+
+    .slide-desc { 
+
+        font-size: 1.15rem; color: #ccc; line-height: 1.6; margin-bottom: 35px; 
+
+        max-width: 600px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; 
+
+        text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+
+        opacity: 0; transform: translateY(20px); transition: 0.8s ease 0.6s;
+
+    }
+
+    .slide-item.active .slide-desc { opacity: 1; transform: translateY(0); }
+
+    
+
+    .slide-buttons { display: flex; gap: 20px; opacity: 0; transform: translateY(20px); transition: 0.8s ease 0.7s; }
+
+    .slide-item.active .slide-buttons { opacity: 1; transform: translateY(0); }
+
+    
+
+    .btn-play { 
+
+        background: var(--primary); color: #fff; 
+
+        padding: 16px 40px; border-radius: 8px; font-weight: 700; 
+
+        display: inline-flex; align-items: center; gap: 12px; font-size: 17px; 
+
+        transition: 0.3s; border: none; 
+
+        box-shadow: 0 10px 30px rgba(229, 9, 20, 0.4);
+
+    }
+
+    .btn-play:hover { background: #ff0f1f; transform: scale(1.05); box-shadow: 0 15px 40px rgba(229, 9, 20, 0.6); }
+
+    
+
+    .btn-detail { 
+
+        background: rgba(255,255,255,0.1); color: #fff; 
+
+        padding: 16px 40px; border-radius: 8px; font-weight: 600; font-size: 17px; 
+
+        backdrop-filter: blur(15px); display: inline-flex; align-items: center; gap: 12px; 
+
+        transition: 0.3s; border: 1px solid rgba(255,255,255,0.2); 
+
+    }
+
+    .btn-detail:hover { background: rgba(255,255,255,0.25); transform: scale(1.05); border-color: #fff; }
+
+    
+
+    .slider-nav { position: absolute; bottom: 50px; right: 50px; top: auto; transform: none; z-index: 10; display: flex; gap: 15px; }
+
+    .nav-btn { width: 60px; height: 60px; border-radius: 50%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; backdrop-filter: blur(5px); font-size: 20px; }
+
+    .nav-btn:hover { background: #fff; color: #000; transform: scale(1.1); }
+
+
+
+    /* --- LAYOUTS --- */
+
+    .container { padding: 0 4% 50px; }
+
+    .section-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px; }
+
+    .section-title { font-size: 22px; font-weight: 700; color: #fff; letter-spacing: 0.5px; border-left: 3px solid var(--primary); padding-left: 15px; }
+
+    .section-link { font-size: 12px; color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+
+
+
+    /* YATAY LİSTE */
+
+    .horizontal-wrapper { position: relative; width: 100%; margin-bottom: 40px; }
+
+    
+
+    .horizontal-list {
+
+        display: flex;
+
+        gap: 20px;
+
+        overflow-x: auto;
+
+        padding-bottom: 20px;
+
+        scroll-behavior: smooth;
+
+        -webkit-overflow-scrolling: touch;
+
+        scrollbar-width: none; 
+
+    }
+
+    .horizontal-list::-webkit-scrollbar { display: none; }
+
+    
+
+    .horizontal-list .movie-card {
+
+        min-width: 200px;
+
+        width: 200px;
+
+        flex-shrink: 0;
+
+    }
+
+
+
+    .scroll-btn {
+
+        position: absolute;
+
+        top: 45%; 
+
+        transform: translateY(-50%);
+
+        width: 50px; height: 50px;
+
+        border-radius: 50%;
+
+        background: rgba(0,0,0,0.6);
+
+        color: #fff;
+
+        border: 1px solid rgba(255,255,255,0.2);
+
+        display: flex; align-items: center; justify-content: center;
+
+        cursor: pointer;
+
+        z-index: 20;
+
+        backdrop-filter: blur(5px);
+
+        transition: 0.3s;
+
+        opacity: 0; visibility: hidden;
+
+    }
+
+    .horizontal-wrapper:hover .scroll-btn { opacity: 1; visibility: visible; }
+
+    .scroll-btn:hover { background: var(--primary); border-color: var(--primary); transform: translateY(-50%) scale(1.1); }
+
+    .scroll-btn.left { left: -25px; }
+
+    .scroll-btn.right { right: -25px; }
+
+
+
+    /* NORMAL IZGARA */
+
+    .grid-movies { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 30px 20px; }
+
+    
+
+    /* KART TASARIMI */
+
+    .movie-card { position: relative; aspect-ratio: 2/3; border-radius: var(--radius); overflow: hidden; background: var(--bg-card); transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); box-shadow: 0 5px 15px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; }
+
+    .movie-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.5); z-index: 5; border-color: rgba(255,255,255,0.2); }
+
+    .poster-img { width: 100%; height: 100%; object-fit: cover; transition: 0.4s; }
+
+    .movie-card:hover .poster-img { opacity: 0.3; transform: scale(1.05); filter: blur(3px); }
+
+    .play-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.5); width: 60px; height: 60px; background: rgba(229, 9, 20, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #fff; opacity: 0; transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 0 20px rgba(229, 9, 20, 0.6); }
+
+    .movie-card:hover .play-icon { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+
+    .card-info { position: absolute; inset: 0; padding: 15px; display: flex; flex-direction: column; justify-content: flex-end; opacity: 0; transition: 0.3s; }
+
+    .movie-card:hover .card-info { opacity: 1; }
+
+    .card-title { font-weight: 800; font-size: 15px; margin-bottom: 8px; line-height: 1.2; color:#fff; text-shadow: 0 2px 5px #000; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+    .card-meta { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #ddd; font-weight: 600; }
+
+    .card-year { background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 4px; backdrop-filter: blur(2px); }
+
+    .card-genre { color: var(--primary); text-transform: uppercase; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; }
+
+    
+
+    .type-badge { position: absolute; top: 12px; right: 12px; padding: 5px 12px; border-radius: 8px; font-size: 10px; font-weight: 900; color: #fff; z-index: 10; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); pointer-events: none; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); }
+
+    .type-badge.film { background: linear-gradient(135deg, rgba(229,9,20,0.8), rgba(184,2,11,0.9)); box-shadow: 0 4px 15px rgba(229,9,20,0.3); }
+
+    .type-badge.dizi { background: linear-gradient(135deg, rgba(155, 89, 182, 0.8), rgba(142, 68, 173, 0.9)); box-shadow: 0 4px 15px rgba(155, 89, 182, 0.3); }
+
+    
+
+    .imdb-badge { position: absolute; top: 12px; left: 12px; z-index: 10; background: #f5c518; color: #000; font-weight: 800; font-size: 11px; padding: 4px 8px; border-radius: 4px; display: flex; align-items: center; gap: 4px; box-shadow: 0 4px 15px rgba(245, 197, 24, 0.3); opacity: 0; transition: opacity 0.5s ease; }
+
+    .imdb-badge.loaded { opacity: 1; }
+
+
+
+    /* --- YENİ DİL ROZETLERİ (GELİŞTİRİLMİŞ) --- */
+
+    .lang-badges { position: absolute; top: 45px; left: 10px; display: flex; flex-direction: column; gap: 6px; z-index: 10; }
+
+    
+
+    .lang-badge { 
+
+        font-size: 10px; padding: 4px 8px; border-radius: 4px; font-weight: 800; 
+
+        text-transform: uppercase; color: #fff; display: inline-flex; align-items: center; gap: 5px; 
+
+        letter-spacing: 0.5px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); 
+
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+
+    }
+
+    .lang-badge i { font-size: 11px; }
+
+
+
+    /* DUBLAJ - Mavi/Turkuaz tonu, daha parlak */
+
+    .lang-badge.dub { 
+
+        background: linear-gradient(45deg, #FF0000, #FF0000);
+
+        
+
+    }
+
+    
+
+    /* ALTYAZI - Yeşil tonu, daha parlak */
+
+    .lang-badge.sub { 
+
+        background: linear-gradient(45deg, #11998e, #018749); 
+
+        
+
+    }
+
+    
+
+    .load-more-container { text-align: center; margin-top: 50px; }
+
+    .btn-load-more { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 15px 40px; border-radius: 50px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: 0.3s; font-size: 14px; }
+
+    .btn-load-more:hover { background: var(--primary); border-color: var(--primary); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(229,9,20,0.3); }
+
+    .btn-load-more i { margin-right: 8px; }
+
+    .btn-load-more.loading { opacity: 0.7; cursor: wait; pointer-events: none; }
+
+
+
+    /* Post Content Styles */
+
+    .post-container { max-width: 1400px; margin: 30px auto; padding: 0 20px; }
+
+    .player-wrapper { position: relative; z-index: 20; }
+
+    .player-box { position: relative; width: 100%; padding-bottom: 56.25%; background: #000; border-radius: 16px; overflow: hidden; box-shadow: 0 0 80px rgba(0,0,0,0.6); border: 1px solid #333; margin-bottom: 20px; }
+
+    .player-box iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
+    .content-grid { display: grid; grid-template-columns: 1fr 350px; gap: 50px; }
+
+    .movie-header h1 { font-size: 38px; margin: 0 0 10px 0; color: #fff; line-height: 1.1; font-weight: 800; letter-spacing: -1px; }
+
+    .meta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 30px; align-items: center; }
+
+    .meta-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 8px 16px; border-radius: 50px; font-size: 13px; font-weight: 600; color: #e5e5e5; transition: 0.3s ease; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    .meta-tag:hover { background: rgba(255, 255, 255, 0.15); border-color: var(--primary); color: #fff; transform: translateY(-2px); }
+
+    .meta-tag i { color: var(--primary); font-size: 14px; }
+
+    .synopsis { background: var(--bg-card); padding: 35px; border-radius: 12px; color: var(--text-sec); line-height: 1.8; font-size: 16px; border: 1px solid rgba(255,255,255,0.05); }
+
+    .synopsis h3 { color: #fff; margin-top: 0; font-size: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 15px; font-weight: 700; }
+
+    .sidebar-sticky { position: sticky; top: 100px; }
+
+    .info-card { background: var(--bg-card); border-radius: 12px; padding: 25px; border: 1px solid rgba(255,255,255,0.05); }
+
+    .info-row { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 15px 0; }
+
+    .info-row:last-child { border: none; }
+
+    .label { color: #777; font-size: 13px; font-weight: 600; text-transform: uppercase; }
+
+    .value { color: #eee; font-weight: 600; text-align: right; font-size: 14px; }
+
+    .action-btn { display: block; width: 100%; background: #333; color: #fff; text-align: center; padding: 14px; border-radius: 8px; margin-top: 10px; font-weight: 600; transition: 0.3s; }
+
+    .action-btn:hover { background: #444; }
+
+    .action-btn.primary { background: var(--primary); }
+
+    .action-btn.primary:hover { background: #c00811; }
+
+    .related-area { margin-top: 60px; }
+
+    .related-title { font-size: 24px; font-weight: 700; margin-bottom: 30px; border-left: 4px solid var(--primary); padding-left: 20px; color: #fff; }
+
+
+
+    /* Footer */
+
+    .site-footer { background: #080808; border-top: 1px solid #1a1a1a; padding: 60px 0 30px; margin-top: 100px; }
+
+    .footer-content { max-width: 1400px; margin: 0 auto; padding: 0 4%; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+
+    .footer-brand h2 { color: var(--primary); font-size: 28px; margin: 0 0 15px 0; font-weight: 900; }
+
+    .footer-text { color: #666; font-size: 14px; line-height: 1.6; max-width: 400px; }
+
+    .footer-links { display: flex; gap: 25px; justify-content: flex-end; }
+
+    .footer-links a { color: #888; font-size: 14px; font-weight: 500; }
+
+    .footer-links a:hover { color: #fff; }
+
+    .copyright { text-align: center; border-top: 1px solid #1a1a1a; padding-top: 25px; color: #444; font-size: 13px; }
+
+    .hidden-thumb { display: none !important; }
+
+    .post-content img:first-child { display: none !important; }
+
+
+
+    /* Comments Styles */
+
+    .comments-area { margin-top: 50px; background: var(--bg-card); padding: 35px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); }
+
+    .comments-title { font-size: 22px; color: #eee; margin-bottom: 30px; font-weight: 700; border-left: 4px solid var(--primary); padding-left: 15px; }
+
+    .comment-item { display: flex; gap: 20px; margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 30px; }
+
+    .comment-item:last-child { border: none; margin: 0; padding: 0; }
+
+    .avatar-box img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid #333; }
+
+    .comment-content { flex: 1; }
+
+    .comment-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+
+    .user-name { font-weight: 700; color: #fff; font-size: 15px; display:flex; align-items:center; gap:8px;}
+
+    .user-name a { pointer-events: none; text-decoration: none; color: inherit; cursor: default; }
+
+    .comment-date { font-size: 11px; color: #666; font-weight: 600; text-transform: uppercase; }
+
+    .admin-badge { background: var(--primary); color: #fff; font-size: 9px; padding: 2px 6px; border-radius: 3px; text-transform: uppercase; font-weight: 800; display: inline-flex; align-items: center; gap: 3px; }
+
+    .comment-body { color: #ccc; font-size: 14px; line-height: 1.6; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 0 10px 10px 10px; border: 1px solid rgba(255,255,255,0.05); }
+
+    .comment-actions { margin-top: 15px; text-align: right; }
+
+    .comment-reply { font-size: 11px; color: var(--primary); background: transparent; padding: 6px 15px; border-radius: 20px; font-weight: 700; cursor: pointer; text-transform: uppercase; transition: 0.3s; display: inline-block; border: 1px solid var(--primary); position: relative; z-index: 5; }
+
+    .comment-reply:hover { background: var(--primary); color: #fff; text-decoration: none; box-shadow: 0 5px 15px rgba(229, 9, 20, 0.4); }
+
+    .comment-form-container { margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; }
+
+    .comment-form-container h4 { color: #ddd; font-size: 18px; margin-bottom: 15px; }
+
+    iframe.blogger-iframe-colorize, iframe.blogger-comment-from-post { width: 100% !important; min-height: 250px !important; border: 1px solid #333 !important; border-radius: 12px; background: #fff; filter: invert(0.92) hue-rotate(180deg); }
+
+
+
+    /* --- RESPONSIVE --- */
+
+    @media (max-width: 1024px) {
+
+        .content-grid { grid-template-columns: 1fr; }
+
+        .sidebar-sticky { position: static; margin-top: 30px; }
+
+    }
+
+    @media (max-width: 768px) {
+
+        /* MOBİL MENÜ DÜZENLEMESİ */
+
+        .nav-menu { position: fixed; top: var(--header-h); left: 0; width: 100%; height: auto; background: var(--bg-body); border-bottom: 1px solid #222; box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: none; flex-direction: column; padding: 20px 0; align-items: flex-start; }
+
+        .nav-menu.active { display: flex; }
+
+        .nav-list { flex-direction: column; width: 100%; align-items: flex-start; gap: 0; }
+
+        .nav-item { width: 100%; display: block; height: auto; border-bottom: 1px solid rgba(255,255,255,0.05); }
+
+        .nav-link { padding: 15px 30px; width: 100%; }
+
+        
+
+        /* Mobil Dropdown */
+
+        .dropdown { position: static; width: 100%; visibility: visible; opacity: 1; transform: none; box-shadow: none; border: none; background: rgba(0,0,0,0.2); display: none; padding: 0; }
+
+        .nav-item.active-mobile .dropdown { display: block; }
+
+        .dropdown li a { padding-left: 50px; }
+
+
+
+        .menu-toggle { display: block; order: 3; margin-left: 20px; }
+
+        .right-area { margin-left: auto; }
+
+        .classic-search-box { width: 150px; }
+
+        .classic-search-box:focus-within { width: 200px; }
+
+        
+
+        .grid-movies { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+
+        .movie-card { aspect-ratio: 2/3.2; }
+
+
+
+        /* MOBİL YATAY KAYDIRMA */
+
+        .scroll-btn { display: none !important; } /* Mobilde okları gizle */
+
+        .horizontal-list { padding-bottom: 10px; }
+
+        .horizontal-list .movie-card { min-width: 150px; width: 150px; }
+
+        
+
+        /* MOBİL SLIDER AYARLARI */
+
+        .main-slider { height: 80vh; margin-top: 0; margin-bottom: 20px; }
+
+        .slide-content { bottom: 60px; left: 5%; width: 90%; max-width: 90%; text-align: left; }
+
+        .slide-title { font-size: 2.8rem; margin-bottom: 10px; }
+
+        .slide-desc { font-size: 1rem; -webkit-line-clamp: 3; margin-bottom: 20px; display: -webkit-box; }
+
+        .slide-meta { margin-bottom: 15px; justify-content: flex-start; }
+
+        .slide-buttons { justify-content: flex-start; }
+
+        
+
+        .slider-nav { display: none !important; } 
+
+        
+
+        .btn-play, .btn-detail { padding: 12px 20px; font-size: 14px; }
+
+        .footer-content { grid-template-columns: 1fr; text-align: center; }
+
+        .footer-links { justify-content: center; margin-top: 20px; }
+
+        .container { padding-top: 10px; }
+
+    }
+
+    ]]></b:skin>
+
+</head>
+
+<body>
+
+
+
+    <header id='main-header'>
+
+        <div class='logo'>
+
+            <a expr:href='data:blog.homepageUrl'>
+
+                <h1><data:blog.title/></h1>
+
+            </a>
+
+        </div>
+
+        
+
+        <nav class='nav-menu' id='nav-menu'>
+
+            <ul class='nav-list'>
+
+                <li class='nav-item'>
+
+                    <a class='nav-link' href='/'><i class='fas fa-home'/> ANASAYFA</a>
+
+                </li>
+
+                
+
+                <li class='nav-item has-sub' onclick='toggleMobileSub(this)'>
+
+                    <a class='nav-link' href='javascript:void(0)'>
+
+                        <i class='fas fa-layer-group'/> KATEGORİLER <i class='fas fa-angle-down' style='font-size:10px; margin-left:3px;'/>
+
+                    </a>
+
+                    <ul class='dropdown'>
+
+                        <li><a href='/search/label/Aksiyon'>Aksiyon</a></li>
+
+                        <li><a href='/search/label/Komedi'>Komedi</a></li>
+
+                        <li><a href='/search/label/Dram'>Dram</a></li>
+
+                        <li><a href='/search/label/Bilim Kurgu'>Bilim Kurgu</a></li>
+
+                        <li><a href='/search/label/Korku'>Korku</a></li>
+
+                    </ul>
+
+                </li>
+
+
+
+                <li class='nav-item'>
+
+                    <a class='nav-link' href='/search/label/Film'><i class='fas fa-film'/> FİLMLER</a>
+
+                </li>
+
+                <li class='nav-item'>
+
+                    <a class='nav-link' href='/search/label/Dizi'><i class='fas fa-tv'/> DİZİLER</a>
+
+                </li>
+
+                <li class='nav-item'>
+
+                    <a class='nav-link' href='/search/label/Popüler'><i class='fas fa-fire'/> POPÜLER</a>
+
+                </li>
+
+            </ul>
+
+        </nav>
+
+
+
+        <div class='right-area'>
+
+            <div class='classic-search-box'>
+
+                <form action='/search' method='get'>
+
+                    <input autocomplete='off' id='search-input-field' name='q' placeholder='Film veya dizi ara...' type='text'/>
+
+                    <button type='submit'><i class='fas fa-search'/></button>
+
+                </form>
+
+                <div class='search-results-box' id='live-search-results'/>
+
+            </div>
+
+            
+
+            <div class='menu-toggle' onclick='toggleMenu()'>
+
+                <i class='fas fa-bars'/>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    
+
+    <b:if cond='data:view.isHomepage'>
+
+        <div class='main-slider' id='touch-slider'>
+
+            <div class='slider-wrapper' id='hero-slider'>
+
+                </div>
+
+            
+
+            <div class='slider-nav'>
+
+                <div class='nav-btn prev-slide' onclick='moveSlide(-1)'><i class='fas fa-chevron-left'/></div>
+
+                <div class='nav-btn next-slide' onclick='moveSlide(1)'><i class='fas fa-chevron-right'/></div>
+
+            </div>
+
+        </div>
+
+        
+
+        <script>
+
+        //<![CDATA[
+
+            document.addEventListener("DOMContentLoaded", function() {
+
+                var container = document.getElementById('hero-slider');
+
+                
+
+                function renderDemoSlider() {
+
+                    var demoSlides = [
+
+                        {title: "Sinema Dünyası", desc: "En yeni filmleri ve dizileri 4K kalitesinde izleyin. Sinema keyfi evinizde.", img: "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80", link: "/search", rating: "9.5", genre: "Sinema"},
+
+                        {title: "Dizileri Keşfet", desc: "Soluksuz izleyeceğiniz en popüler diziler burada. Hemen maratona başla.", img: "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80", link: "/search/label/Dizi", rating: "8.9", genre: "Dizi"},
+
+                        {title: "Aksiyon Filmleri", desc: "Adrenalin dolu aksiyon filmleri ile heyecana ortak ol.", img: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80", link: "/search/label/Aksiyon", rating: "9.1", genre: "Aksiyon"}
+
+                    ];
+
+                    
+
+                    var html = "";
+
+                    demoSlides.forEach((slide, i) => {
+
+                        var active = i === 0 ? " active" : "";
+
+                        html += `
+
+                        <div class="slide-item${active}">
+
+                            <img class="slide-bg" src="${slide.img}" alt="${slide.title}">
+
+                            <div class="slide-overlay"></div>
+
+                            <div class="slide-content">
+
+                                <div class="slide-meta">
+
+                                    <span class="slide-badge">Öne Çıkan</span>
+
+                                    <span class="slide-rating"><i class="fas fa-star"></i> ${slide.rating}</span>
+
+                                    <span class="slide-genre">${slide.genre}</span>
+
+                                </div>
+
+                                <h2 class="slide-title">${slide.title}</h2>
+
+                                <div class="slide-desc">${slide.desc}</div>
+
+                                <div class="slide-buttons">
+
+                                    <a class="btn-play" href="${slide.link}"><i class="fas fa-play"></i> Hemen İzle</a>
+
+                                    <a class="btn-detail" href="${slide.link}"><i class="fas fa-info-circle"></i> Detay</a>
+
+                                </div>
+
+                            </div>
+
+                        </div>`;
+
+                    });
+
+                    container.innerHTML = html;
+
+                    initSlider(3);
+
+                }
+
+
+
+                // FETCH DATA
+
+                fetch('/feeds/posts/default/-/Slider?alt=json&max-results=10')
+
+                .then(res => res.json())
+
+                .then(data => {
+
+                    if(!data.feed.entry || data.feed.entry.length === 0) {
+
+                        renderDemoSlider();
+
+                        return;
+
+                    }
+
+                    
+
+                    var entries = data.feed.entry;
+
+                    entries.sort(() => Math.random() - 0.5);
+
+                    entries = entries.slice(0, 5);
+
+
+
+                    var sliderHTML = "";
+
+                    
+
+                    entries.forEach((entry, index) => {
+
+                        var title = entry.title.$t;
+
+                        var link = entry.link.find(l => l.rel == 'alternate').href;
+
+                        
+
+                        var img = "https://via.placeholder.com/1600x900";
+
+                        if(entry.media$thumbnail) {
+
+                            img = entry.media$thumbnail.url.replace(/\/s[0-9]+(-c)?\//, '/s0/');
+
+                        }
+
+                        if(entry.content && entry.content.$t) {
+
+                             var doc = new DOMParser().parseFromString(entry.content.$t, 'text/html');
+
+                             var firstImg = doc.querySelector('img');
+
+                             if(firstImg) img = firstImg.src;
+
+                        }
+
+                        
+
+                        var snippet = entry.summary ? entry.summary.$t.substring(0, 160) + "..." : "";
+
+                        var activeClass = index === 0 ? " active" : "";
+
+                        
+
+                        var imdbRating = "";
+
+                        var category = entry.category && entry.category.length > 0 ? entry.category[0].term : "Film";
+
+
+
+                        if(entry.content && entry.content.$t) {
+
+                            var doc = new DOMParser().parseFromString(entry.content.$t, 'text/html');
+
+                            var labels = doc.querySelectorAll('.label');
+
+                            labels.forEach(lbl => {
+
+                                if(lbl.textContent.trim().toUpperCase() === 'IMDB' || lbl.textContent.trim() === 'Puan') {
+
+                                    var val = lbl.nextElementSibling;
+
+                                    if(val && val.classList.contains('value')) {
+
+                                        imdbRating = val.textContent.trim();
+
+                                    }
+
+                                }
+
+                            });
+
+                        }
+
+                        if(imdbRating === "") imdbRating = "";
+
+
+
+                        sliderHTML += `
+
+                        <div class="slide-item${activeClass}">
+
+                            <img class="slide-bg" src="${img}" alt="${title}">
+
+                            <div class="slide-overlay"></div>
+
+                            <div class="slide-content">
+
+                                <div class="slide-meta">
+
+                                    <span class="slide-badge">HD</span>
+
+                                    ${imdbRating ? `<span class="slide-rating"><i class="fas fa-star"></i> ${imdbRating}</span>` : ''}
+
+                                    <span class="slide-genre">${category}</span>
+
+                                </div>
+
+                                <h2 class="slide-title">${title}</h2>
+
+                                <div class="slide-desc">${snippet}</div>
+
+                                <div class="slide-buttons">
+
+                                    <a class="btn-play" href="${link}"><i class="fas fa-play"></i> Hemen İzle</a>
+
+                                    <a class="btn-detail" href="${link}"><i class="fas fa-info-circle"></i> Detay</a>
+
+                                </div>
+
+                            </div>
+
+                        </div>`;
+
+                    });
+
+                    
+
+                    container.innerHTML = sliderHTML;
+
+                    initSlider(entries.length);
+
+                })
+
+                .catch(err => {
+
+                    console.log("Slider Hatası:", err);
+
+                    renderDemoSlider(); 
+
+                });
+
+            });
+
+
+
+            // Slider & Swipe
+
+            function initSlider(total) {
+
+                window.currentSlide = 0;
+
+                window.totalSlides = total;
+
+                setInterval(() => { moveSlide(1); }, 7000); 
+
+                
+
+                const slider = document.getElementById('touch-slider');
+
+                let touchStartX = 0;
+
+                let touchEndX = 0;
+
+
+
+                slider.addEventListener('touchstart', e => {
+
+                    touchStartX = e.changedTouches[0].screenX;
+
+                }, {passive: true});
+
+
+
+                slider.addEventListener('touchend', e => {
+
+                    touchEndX = e.changedTouches[0].screenX;
+
+                    handleSwipe();
+
+                }, {passive: true});
+
+
+
+                function handleSwipe() {
+
+                    if (touchEndX < touchStartX - 50) moveSlide(1); 
+
+                    if (touchEndX > touchStartX + 50) moveSlide(-1); 
+
+                }
+
+            }
+
+
+
+            function moveSlide(n) {
+
+                if(typeof window.totalSlides === 'undefined' || window.totalSlides === 0) return;
+
+                
+
+                window.currentSlide += n;
+
+                if(window.currentSlide >= window.totalSlides) window.currentSlide = 0;
+
+                if(window.currentSlide < 0) window.currentSlide = window.totalSlides - 1;
+
+                
+
+                var wrapper = document.getElementById('hero-slider');
+
+                wrapper.style.transform = `translateX(-${window.currentSlide * 100}%)`;
+
+                
+
+                var slides = document.querySelectorAll('.slide-item');
+
+                slides.forEach(s => s.classList.remove('active'));
+
+                slides[window.currentSlide].classList.add('active');
+
+            }
+
+        //]]>
+
+        </script>
+
+    </b:if>
+
+
+
+    <b:section id='content-area' showaddelement='yes'>
+      <b:widget id='Blog1' locked='true' title='Blog Kayıtları' type='Blog' version='2' visible='true'>
+        <b:widget-settings>
+          <b:widget-setting name='showDateHeader'>false</b:widget-setting>
+          <b:widget-setting name='commentLabel'>comments</b:widget-setting>
+          <b:widget-setting name='style.textcolor'>#ffffff</b:widget-setting>
+          <b:widget-setting name='showShareButtons'>true</b:widget-setting>
+          <b:widget-setting name='showCommentLink'>true</b:widget-setting>
+          <b:widget-setting name='style.urlcolor'>#ffffff</b:widget-setting>
+          <b:widget-setting name='postLocationLabel'>Location:</b:widget-setting>
+          <b:widget-setting name='showAuthor'>false</b:widget-setting>
+          <b:widget-setting name='style.linkcolor'>#ffffff</b:widget-setting>
+          <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
+          <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
+          <b:widget-setting name='timestampLabel'/>
+          <b:widget-setting name='reactionsLabel'/>
+          <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
+          <b:widget-setting name='style.layout'>1x1</b:widget-setting>
+          <b:widget-setting name='showLabels'>true</b:widget-setting>
+          <b:widget-setting name='showLocation'>true</b:widget-setting>
+          <b:widget-setting name='postLabelsLabel'/>
+          <b:widget-setting name='showTimestamp'>true</b:widget-setting>
+          <b:widget-setting name='postsPerAd'>1</b:widget-setting>
+          <b:widget-setting name='showBacklinks'>false</b:widget-setting>
+          <b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
+          <b:widget-setting name='showInlineAds'>false</b:widget-setting>
+          <b:widget-setting name='showReactions'>false</b:widget-setting>
+        </b:widget-settings>
+        <b:includable id='main' var='top'>
+
+    
+
+    <b:if cond='data:view.isMultipleItems'>
+
+        <div class='container'>
+
+            
+
+            <b:if cond='data:view.isHomepage'>
+
+                <div class='section-head'>
+
+                    <div class='section-title'>Filmler</div>
+
+                    <a class='section-link' href='/search/label/Film'>TÜMÜNÜ GÖR</a>
+
+                </div>
+
+                
+
+                <div class='horizontal-wrapper'>
+
+                    <button class='scroll-btn left' onclick='scrollContainer(&quot;custom-movies-grid&quot;, -1)'><i class='fas fa-chevron-left'/></button>
+
+                    <div class='horizontal-list' id='custom-movies-grid'>
+
+                         <div style='color:#666; font-size:14px; padding-left:10px;'>Filmler yükleniyor...</div>
+
+                    </div>
+
+                    <button class='scroll-btn right' onclick='scrollContainer(&quot;custom-movies-grid&quot;, 1)'><i class='fas fa-chevron-right'/></button>
+
+                </div>
+
+
+
+                <div class='section-head' style='margin-top:20px;'>
+
+                    <div class='section-title'>Diziler</div>
+
+                    <a class='section-link' href='/search/label/Dizi'>TÜMÜNÜ GÖR</a>
+
+                </div>
+
+                
+
+                <div class='horizontal-wrapper'>
+
+                    <button class='scroll-btn left' onclick='scrollContainer(&quot;custom-series-grid&quot;, -1)'><i class='fas fa-chevron-left'/></button>
+
+                    <div class='horizontal-list' id='custom-series-grid'>
+
+                         <div style='color:#666; font-size:14px; padding-left:10px;'>Diziler yükleniyor...</div>
+
+                    </div>
+
+                    <button class='scroll-btn right' onclick='scrollContainer(&quot;custom-series-grid&quot;, 1)'><i class='fas fa-chevron-right'/></button>
+
+                </div>
+
+            </b:if>
+
+
+
+            <div class='section-head' style='margin-top:60px;'><div class='section-title'>Son Eklenenler</div></div>
+
+            <div class='grid-movies' id='main-grid'>
+
+                <b:loop values='data:posts' var='post'>
+
+                    <div class='movie-card' expr:data-url='data:post.url' onclick='window.location.href=&quot;data:post.url&quot;;'>
+
+                        
+
+                        <div class='lang-badges'>
+
+                            <b:if cond='data:post.labels'>
+
+                                <b:loop values='data:post.labels' var='label'>
+
+                                    <b:if cond='data:label.name in {&quot;Dublaj&quot;,&quot;dublaj&quot;,&quot;Türkçe Dublaj&quot;}'>
+
+                                        <span class='lang-badge dub'><i class='fas fa-microphone'/> DUB</span>
+
+                                    </b:if>
+
+                                    <b:if cond='data:label.name in {&quot;Altyazı&quot;,&quot;altyazı&quot;,&quot;Türkçe Altyazı&quot;}'>
+
+                                        <span class='lang-badge sub'><i class='fas fa-closed-captioning'/> ALT</span>
+
+                                    </b:if>
+
+                                </b:loop>
+
+                            </b:if>
+
+                        </div>
+
+
+
+                        <b:if cond='data:post.labels'>
+
+                            <b:loop values='data:post.labels' var='label'>
+
+                                <b:if cond='data:label.name in {&quot;Dizi&quot;,&quot;dizi&quot;,&quot;DİZİ&quot;}'>
+
+                                    <span class='type-badge dizi'>DİZİ</span>
+
+                                </b:if>
+
+                                <b:if cond='data:label.name in {&quot;Film&quot;,&quot;film&quot;,&quot;FİLM&quot;}'>
+
+                                    <span class='type-badge film'>FİLM</span>
+
+                                </b:if>
+
+                            </b:loop>
+
+                        </b:if>
+
+
+
+                        <b:if cond='data:post.featuredImage'>
+
+                            <img class='poster-img' expr:src='data:post.featuredImage' loading='lazy'/>
+
+                        <b:else/>
+
+                            <div class='poster-img' style='background:#222;'/>
+
+                        </b:if>
+
+                        
+
+                        <div class='play-icon'><i class='fas fa-play'/></div>
+
+                        
+
+                        <div class='card-info'>
+
+                            <div class='card-title'><data:post.title/></div>
+
+                            <div class='card-meta'>
+
+                                <span class='card-year'/>
+
+                                <span class='card-genre'/>
+
+                            </div>
+
+                        </div>
+
+                        <a expr:href='data:post.url' style='position:absolute; inset:0; z-index:20;'/>
+
+                    </div>
+
+                </b:loop>
+
+            </div>
+
+            
+
+            <div class='load-more-container'>
+
+                <b:if cond='data:olderPageUrl'>
+
+                    <button class='btn-load-more' id='load-more-btn' onclick='loadMorePosts()'>
+
+                        <i class='fas fa-plus'/> DAHA FAZLA YÜKLE
+
+                    </button>
+
+                    <div id='next-page-url' style='display:none;'><data:olderPageUrl/></div>
+
+                </b:if>
+
+            </div>
+
+
+
+        </div>
+
+
+
+        <script>
+
+        //<![CDATA[
+
+            // 1. MEVCUT KARTLARI DÜZENLEME FONKSİYONU
+
+            function enrichCards(context) {
+
+                var cards = context.querySelectorAll('.movie-card:not(.processed)');
+
+                cards.forEach(card => {
+
+                    card.classList.add('processed');
+
+                    var url = card.getAttribute('data-url');
+
+                    
+
+                    if(url) {
+
+                        fetch(url)
+
+                        .then(res => res.text())
+
+                        .then(html => {
+
+                            var parser = new DOMParser();
+
+                            var doc = parser.parseFromString(html, 'text/html');
+
+                            var imdbRating = "", year = "", genre = "";
+
+                            var labels = doc.querySelectorAll('.label');
+
+                            
+
+                            labels.forEach(lbl => {
+
+                                var text = lbl.textContent.trim().toLowerCase();
+
+                                var valNode = lbl.nextElementSibling;
+
+                                if(valNode && valNode.classList.contains('value')) {
+
+                                    var val = valNode.textContent.trim();
+
+                                    if(text.includes('imdb') || text.includes('puan')) imdbRating = val;
+
+                                    if(text.includes('yıl') || text.includes('yapım')) year = val;
+
+                                    if(text.includes('tür') || text.includes('kategori')) {
+
+                                        if(val.length > 12) val = val.split(',')[0] + '';
+
+                                        genre = val;
+
+                                    }
+
+                                }
+
+                            });
+
+
+
+                            if(imdbRating) {
+
+                                var badge = document.createElement('span');
+
+                                badge.className = 'imdb-badge loaded';
+
+                                badge.innerHTML = '<i class="fas fa-star"/> ' + imdbRating;
+
+                                card.appendChild(badge);
+
+                            }
+
+                            if(year) {
+
+                                var yearEl = card.querySelector('.card-year');
+
+                                if(yearEl) yearEl.textContent = year;
+
+                            }
+
+                            if(genre) {
+
+                                var genreEl = card.querySelector('.card-genre');
+
+                                if(genreEl) genreEl.textContent = genre;
+
+                            }
+
+                        })
+
+                        .catch(err => console.log('Data Fetch Error'));
+
+                    }
+
+                });
+
+            }
+
+
+
+            // Sayfa yüklendiğinde mevcut kartları işle
+
+            window.addEventListener('load', function() {
+
+                enrichCards(document);
+
+                
+
+                // YENİ FİLMLER BÖLÜMÜNÜ ÇEK (SADECE ANASAYFADA ÇALIŞIR)
+
+                var container = document.getElementById('custom-movies-grid');
+
+                if(container) {
+
+                    fetch('/feeds/posts/default/-/Film?alt=json&max-results=10')
+
+                    .then(res => res.json())
+
+                    .then(data => {
+
+                        if(!data.feed.entry) {
+
+                             container.innerHTML = "<div style='color:#888;'>Bu kategoride içerik bulunamadı.</div>";
+
+                             return;
+
+                        }
+
+
+
+                        var html = "";
+
+                        data.feed.entry.forEach(entry => {
+
+                            var title = entry.title.$t;
+
+                            var link = entry.link.find(l => l.rel == 'alternate').href;
+
+                            var img = "https://via.placeholder.com/300x450?text=No+Img";
+
+                            var content = "";
+
+                            
+
+                            if (entry.content && entry.content.$t) { content = entry.content.$t; } 
+
+                            else if (entry.summary && entry.summary.$t) { content = entry.summary.$t; }
+
+
+
+                            if(content) {
+
+                                var doc = new DOMParser().parseFromString(content, 'text/html');
+
+                                var firstImg = doc.querySelector('img');
+
+                                if(firstImg) img = firstImg.src;
+
+                            }
+
+                            if(img.includes("placeholder") && entry.media$thumbnail) {
+
+                                 img = entry.media$thumbnail.url.replace(/\/s[0-9]+(-c)?\//, '/w300-h450-c/');
+
+                            }
+
+
+
+                            // METADATA ve KATEGORİ KONTROLÜ
+
+                            var imdbRating = "";
+
+                            var year = "";
+
+                            var genre = "Film"; 
+
+                            var isDub = false;
+
+                            var isSub = false;
+
+
+
+                            if(entry.category) {
+
+                                entry.category.forEach(c => {
+
+                                    var term = c.term.toLowerCase();
+
+                                    if(term.includes('dublaj')) isDub = true;
+
+                                    if(term.includes('altyazı') || term.includes('altyazi')) isSub = true;
+
+                                });
+
+                            }
+
+
+
+                            if(content) {
+
+                                var doc = new DOMParser().parseFromString(content, 'text/html');
+
+                                var labels = doc.querySelectorAll('.label');
+
+                                labels.forEach(lbl => {
+
+                                    var text = lbl.textContent.trim().toLowerCase();
+
+                                    var valNode = lbl.nextElementSibling;
+
+                                    if(valNode && valNode.classList.contains('value')) {
+
+                                        var val = valNode.textContent.trim();
+
+                                        if(text.includes('imdb') || text.includes('puan')) imdbRating = val;
+
+                                        if(text.includes('yıl') || text.includes('yapım')) year = val;
+
+                                        if(text.includes('tür') || text.includes('kategori')) {
+
+                                            if(val.length > 12) val = val.split(',')[0] + '';
+
+                                            genre = val;
+
+                                        }
+
+                                    }
+
+                                });
+
+                            }
+
+
+
+                            html += `
+
+                            <div class="movie-card" onclick="window.location.href='${link}'">
+
+                                <span class='type-badge film'>FİLM</span>
+
+                                ${imdbRating ? `<span class="imdb-badge loaded"><i class="fas fa-star"></i> ${imdbRating}</span>` : ''}
+
+
+
+                                <div class="lang-badges">
+
+                                    ${isDub ? `<span class="lang-badge dub"><i class="fas fa-microphone"></i> DUB</span>` : ''}
+
+                                    ${isSub ? `<span class="lang-badge sub"><i class="fas fa-closed-captioning"></i> ALT</span>` : ''}
+
+                                </div>
+
+
+
+                                <img class="poster-img" src="${img}" loading="lazy"/>
+
+                                <div class="play-icon"><i class="fas fa-play"></i></div>
+
+                                <div class="card-info">
+
+                                    <div class="card-title">${title}</div>
+
+                                    <div class="card-meta">
+
+                                        <span class="card-year">${year}</span>
+
+                                        <span class="card-genre">${genre}</span>
+
+                                    </div>
+
+                                </div>
+
+                                <a href="${link}" style="position:absolute; inset:0; z-index:20;"></a>
+
+                            </div>`;
+
+                        });
+
+                        container.innerHTML = html;
+
+                    })
+
+                    .catch(err => console.log("Film Grid Hatası:", err));
+
+                }
+
+
+
+                // YENİ DİZİLER BÖLÜMÜNÜ ÇEK (SADECE ANASAYFADA ÇALIŞIR)
+
+                var containerSeries = document.getElementById('custom-series-grid');
+
+                if(containerSeries) {
+
+                    fetch('/feeds/posts/default/-/Dizi?alt=json&max-results=10')
+
+                    .then(res => res.json())
+
+                    .then(data => {
+
+                        if(!data.feed.entry) {
+
+                             containerSeries.innerHTML = "<div style='color:#888;'>Bu kategoride içerik bulunamadı.</div>";
+
+                             return;
+
+                        }
+
+
+
+                        var html = "";
+
+                        data.feed.entry.forEach(entry => {
+
+                            var title = entry.title.$t;
+
+                            var link = entry.link.find(l => l.rel == 'alternate').href;
+
+                            var img = "https://via.placeholder.com/300x450?text=No+Img";
+
+                            var content = "";
+
+                            
+
+                            if (entry.content && entry.content.$t) { content = entry.content.$t; } 
+
+                            else if (entry.summary && entry.summary.$t) { content = entry.summary.$t; }
+
+
+
+                            if(content) {
+
+                                var doc = new DOMParser().parseFromString(content, 'text/html');
+
+                                var firstImg = doc.querySelector('img');
+
+                                if(firstImg) img = firstImg.src;
+
+                            }
+
+                            if(img.includes("placeholder") && entry.media$thumbnail) {
+
+                                 img = entry.media$thumbnail.url.replace(/\/s[0-9]+(-c)?\//, '/w300-h450-c/');
+
+                            }
+
+
+
+                            // METADATA ve KATEGORİ KONTROLÜ
+
+                            var imdbRating = "";
+
+                            var year = "";
+
+                            var genre = "Dizi"; 
+
+                            var isDub = false;
+
+                            var isSub = false;
+
+
+
+                            if(entry.category) {
+
+                                entry.category.forEach(c => {
+
+                                    var term = c.term.toLowerCase();
+
+                                    if(term.includes('dublaj')) isDub = true;
+
+                                    if(term.includes('altyazı') || term.includes('altyazi')) isSub = true;
+
+                                });
+
+                            }
+
+
+
+                            if(content) {
+
+                                var doc = new DOMParser().parseFromString(content, 'text/html');
+
+                                var labels = doc.querySelectorAll('.label');
+
+                                labels.forEach(lbl => {
+
+                                    var text = lbl.textContent.trim().toLowerCase();
+
+                                    var valNode = lbl.nextElementSibling;
+
+                                    if(valNode && valNode.classList.contains('value')) {
+
+                                        var val = valNode.textContent.trim();
+
+                                        if(text.includes('imdb') || text.includes('puan')) imdbRating = val;
+
+                                        if(text.includes('yıl') || text.includes('yapım')) year = val;
+
+                                        if(text.includes('tür') || text.includes('kategori')) {
+
+                                            if(val.length > 12) val = val.split(',')[0] + '';
+
+                                            genre = val;
+
+                                        }
+
+                                    }
+
+                                });
+
+                            }
+
+
+
+                            html += `
+
+                            <div class="movie-card" onclick="window.location.href='${link}'">
+
+                                <span class='type-badge dizi'>DİZİ</span>
+
+                                ${imdbRating ? `<span class="imdb-badge loaded"><i class="fas fa-star"></i> ${imdbRating}</span>` : ''}
+
+
+
+                                <div class="lang-badges">
+
+                                    ${isDub ? `<span class="lang-badge dub"><i class="fas fa-microphone"></i> DUB</span>` : ''}
+
+                                    ${isSub ? `<span class="lang-badge sub"><i class="fas fa-closed-captioning"></i> ALT</span>` : ''}
+
+                                </div>
+
+
+
+                                <img class="poster-img" src="${img}" loading="lazy"/>
+
+                                <div class="play-icon"><i class="fas fa-play"></i></div>
+
+                                <div class="card-info">
+
+                                    <div class="card-title">${title}</div>
+
+                                    <div class="card-meta">
+
+                                        <span class="card-year">${year}</span>
+
+                                        <span class="card-genre">${genre}</span>
+
+                                    </div>
+
+                                </div>
+
+                                <a href="${link}" style="position:absolute; inset:0; z-index:20;"></a>
+
+                            </div>`;
+
+                        });
+
+                        containerSeries.innerHTML = html;
+
+                    })
+
+                    .catch(err => console.log("Dizi Grid Hatası:", err));
+
+                }
+
+            });
+
+
+
+            // YATAY KAYDIRMA FONKSİYONU
+
+            function scrollContainer(id, direction) {
+
+                var container = document.getElementById(id);
+
+                var scrollAmount = 300; 
+
+                if(container) {
+
+                    container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+
+                }
+
+            }
+
+
+
+            // 2. AJAX LOAD MORE FONKSİYONU
+
+            function loadMorePosts() {
+
+                var btn = document.getElementById('load-more-btn');
+
+                var nextUrlDiv = document.getElementById('next-page-url');
+
+                
+
+                if(!nextUrlDiv || nextUrlDiv.textContent.trim() === "") {
+
+                    btn.style.display = 'none';
+
+                    return;
+
+                }
+
+
+
+                var url = nextUrlDiv.textContent.trim();
+
+                btn.classList.add('loading');
+
+                btn.innerHTML = "<i class='fas fa-spinner fa-spin'></i> YÜKLENİYOR...";
+
+
+
+                fetch(url)
+
+                .then(response => response.text())
+
+                .then(data => {
+
+                    var parser = new DOMParser();
+
+                    var doc = parser.parseFromString(data, 'text/html');
+
+                    
+
+                    var newPosts = doc.querySelectorAll('.grid-movies .movie-card');
+
+                    var mainGrid = document.getElementById('main-grid');
+
+                    
+
+                    if(newPosts.length > 0) {
+
+                        newPosts.forEach(post => {
+
+                            mainGrid.appendChild(post);
+
+                        });
+
+                        
+
+                        enrichCards(mainGrid);
+
+                    }
+
+
+
+                    var nextLinkObj = doc.getElementById('next-page-url');
+
+                    if(nextLinkObj && nextLinkObj.textContent.trim() !== "") {
+
+                        nextUrlDiv.textContent = nextLinkObj.textContent.trim();
+
+                        btn.classList.remove('loading');
+
+                        btn.innerHTML = "<i class='fas fa-plus'></i> DAHA FAZLA YÜKLE";
+
+                    } else {
+
+                        btn.style.display = 'none';
+
+                    }
+
+                })
+
+                .catch(err => {
+
+                    console.log('Load More Error:', err);
+
+                    btn.classList.remove('loading');
+
+                    btn.innerHTML = "HATA OLUŞTU";
+
+                });
+
+            }
+
+
+
+            // 3. Header Functions
+
+            window.addEventListener('scroll', function() {
+
+                var header = document.getElementById('main-header');
+
+                if (window.scrollY > 50) header.classList.add('scrolled');
+
+                else header.classList.remove('scrolled');
+
+            });
+
+            
+
+            function toggleMenu() {
+
+                document.getElementById('nav-menu').classList.toggle('active');
+
+            }
+
+
+
+            function toggleMobileSub(item) {
+
+                // Sadece mobilde çalışsın
+
+                if(window.innerWidth <= 768) {
+
+                    item.classList.toggle('active-mobile');
+
+                }
+
+            }
+
+        //]]>
+
+        </script>
+
+
+
+    <b:else/>
+
+        <div class='post-container'>
+
+            <b:loop values='data:posts' var='post'>
+
+                
+
+                <div class='post-content'>
+
+                    <data:post.body/>
+
+                </div>
+
+                
+
+                <b:if cond='data:post.labels'>
+
+                    <div class='related-wrapper' expr:data-id='data:post.id' expr:data-label='data:post.labels.first.name' id='related-engine' style='display:none;'>
+
+                        <div class='related-area' style='margin-top:50px;'>
+
+                            <div class='related-title' style='color:#fff; font-size:22px; margin-bottom:20px; font-weight:700; border-left:4px solid var(--primary); padding-left:15px;'>
+
+                                Benzer İçerikler
+
+                            </div>
+
+                            <div class='grid-movies' id='related-grid'/>
+
+                        </div>
+
+                    </div>
+
+                </b:if>
+
+
+
+                <b:include data='post' name='nativeStyledComments'/>
+
+
+
+            </b:loop>
+
+        </div>
+
+    </b:if>
+
+</b:includable>
+        <b:includable id='aboutPostAuthor'/>
+        <b:includable id='addComments'/>
+        <b:includable id='blogThisShare'/>
+        <b:includable id='bylineByName' var='byline'/>
+        <b:includable id='bylineRegion' var='regionItems'/>
+        <b:includable id='commentAuthorAvatar'/>
+        <b:includable id='commentDeleteIcon' var='comment'/>
+        <b:includable id='commentForm' var='post'>
+
+          <div class='comment-form'>
+
+            <a name='comment-form'/>
+
+            <b:include data='post' name='commentFormIframeSrc'/>
+
+            <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
+
+            <data:post.cmtfpIframe/>
+
+            <script type='text/javascript'>
+
+              BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);
+
+            </script>
+
+          </div>
+
+        </b:includable>
+        <b:includable id='commentFormIframeSrc' var='post'>
+
+          <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src'/>
+
+        </b:includable>
+        <b:includable id='commentItem' var='comment'/>
+        <b:includable id='commentList' var='comments'/>
+        <b:includable id='commentPicker' var='post'/>
+        <b:includable id='comments' var='post'/>
+        <b:includable id='commentsLink'/>
+        <b:includable id='commentsLinkIframe'/>
+        <b:includable id='commentsTitle'/>
+        <b:includable id='defaultAdUnit'/>
+        <b:includable id='emailPostIcon'/>
+        <b:includable id='facebookShare'/>
+        <b:includable id='feedLinks'/>
+        <b:includable id='feedLinksBody' var='links'/>
+        <b:includable id='footerBylines'/>
+        <b:includable id='googlePlusShare'/>
+        <b:includable id='headerByline'/>
+        <b:includable id='homePageLink'/>
+        <b:includable id='iframeComments' var='post'/>
+        <b:includable id='inlineAd' var='post'/>
+        <b:includable id='linkShare'/>
+        <b:includable id='nativeStyledComments' var='post'>
+
+  <div class='comments-area' id='comments'>
+
+    
+
+    <h3 class='comments-title'>
+
+        <b:if cond='data:post.numberOfComments &gt; 0'>
+
+            Yorumlar (<data:post.numberOfComments/>)
+
+        <b:else/>
+
+            Yorumlar
+
+        </b:if>
+
+    </h3>
+
+
+
+    <div class='comments-list'>
+
+      <b:if cond='data:post.comments'>
+
+        <b:loop values='data:post.comments' var='comment'>
+
+          
+
+          <div class='comment-item' expr:id='&quot;c&quot; + data:comment.id'>
+
+            <div class='avatar-box'>
+
+              <b:if cond='data:comment.authorAvatarSrc'>
+
+  <img loading='lazy' src='https://vampiretar.framiq.com/assets/examples/vampiretar01.png'/>
+
+              <b:else/>
+
+                <img loading='lazy' src='https://vampiretar.framiq.com/assets/examples/vampiretar07.png'/>
+
+              </b:if>
+
+            </div>
+
+            
+
+            <div class='comment-content'>
+
+              <div class='comment-header'>
+
+                <span class='user-name'>
+                  
+                    <data:comment.author/>
+
+                    
+
+                    <b:if cond='data:comment.adminClass == data:post.adminClass'>
+
+                        <span class='admin-badge'>
+
+                            <i class='fas fa-check-circle'/> YÖNETİCİ
+
+                        </span>
+
+                    </b:if>
+
+                </span>
+
+                <span class='comment-date'><data:comment.timestamp/></span>
+
+              </div>
+
+              
+
+              <div class='comment-body'>
+
+                <data:comment.body/>
+
+              </div>
+
+              
+
+              <div class='comment-actions'>
+
+                <a class='comment-reply' expr:href='&quot;https://www.blogger.com/comment.g?blogID=&quot; + data:blog.blogId + &quot;&amp;postID=&quot; + data:post.id + &quot;&amp;isPopup=true&amp;postBody=%40&quot; + data:comment.author + &quot; &quot;' onclick='javascript:window.open(this.href, &quot;bloggerPopup&quot;, &quot;toolbar=0,scrollbars=1,location=0,statusbar=1,menubar=0,resizable=1,width=450,height=450&quot;); return false;'>
+
+                    <i class='fas fa-reply'/> Cevapla
+
+                </a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+        </b:loop>
+
+      <b:else/>
+
+        <div style='text-align:center; padding:30px; color:#888; background:rgba(255,255,255,0.03); border-radius:12px;'>
+
+            <i class='fas fa-comments' style='font-size:30px; margin-bottom:10px; display:block; color:#444;'/>
+
+            Henüz yorum yapılmamış. İlk yorumu sen yap!
+
+        </div>
+
+      </b:if>
+
+    </div>
+
+
+
+    <div class='comment-form-container'>
+
+       <h4>Bir Yorum Bırak</h4>
+
+       <div class='comment-form'>
+
+         <a name='comment-form'/>
+
+         <b:if cond='data:post.allowNewComments'>
+
+           <b:include data='post' name='commentForm'/>
+
+         <b:else/>
+
+           <div style='color:#ccc;'>Yorumlar bu yayın için kapatıldı.</div>
+
+         </b:if>
+
+       </div>
+
+    </div>
+
+    
+
+  </div>
+
+</b:includable>
+        <b:includable id='nextPageLink'/>
+        <b:includable id='nextPrev'>
+
+            </b:includable>
+        <b:includable id='otherSharingButton'/>
+        <b:includable id='platformShare'/>
+        <b:includable id='post' var='post'/>
+        <b:includable id='postAuthor'/>
+        <b:includable id='postBody' var='post'/>
+        <b:includable id='postBodySnippet' var='post'/>
+        <b:includable id='postCommentsAndAd' var='post'/>
+        <b:includable id='postCommentsLink'/>
+        <b:includable id='postFooter' var='post'/>
+        <b:includable id='postFooterAuthorProfile' var='post'/>
+        <b:includable id='postHeader' var='post'/>
+        <b:includable id='postJumpLink' var='post'/>
+        <b:includable id='postLabels'/>
+        <b:includable id='postLocation'/>
+        <b:includable id='postMeta' var='post'/>
+        <b:includable id='postMetadataJSONImage'/>
+        <b:includable id='postMetadataJSONPublisher'/>
+        <b:includable id='postPagination'/>
+        <b:includable id='postReactions'/>
+        <b:includable id='postShareButtons'/>
+        <b:includable id='postTimestamp'/>
+        <b:includable id='postTitle' var='post'/>
+        <b:includable id='previousPageLink'/>
+        <b:includable id='sharingButton'/>
+        <b:includable id='sharingButtonContent'/>
+        <b:includable id='sharingButtons'/>
+        <b:includable id='sharingButtonsMenu'/>
+        <b:includable id='sharingPlatformIcon'/>
+        <b:includable id='snippetedPostByline'/>
+        <b:includable id='snippetedPostContent'/>
+        <b:includable id='snippetedPostThumbnail'/>
+        <b:includable id='snippetedPostTitle'/>
+        <b:includable id='snippetedPosts'/>
+        <b:includable id='threadedCommentForm' var='post'/>
+        <b:includable id='threadedCommentJs' var='post'/>
+        <b:includable id='threadedComments' var='post'/>
+        <b:includable id='tooltipCss'/>
+      </b:widget>
+    </b:section>
+
+
+
+    <footer class='site-footer'>
+
+        <div class='footer-content'>
+
+            <div class='footer-brand'>
+
+                <h2><data:blog.title/></h2>
+
+                <p class='footer-text'>
+
+                    <data:blog.title/>, en yeni filmleri Türkiye&#39;deki film severlere nette ilk olarak ve HD kalitede sunar. &#39;Film izle&#39;, &#39;HD Film izle&#39; ve &#39;<data:blog.title/>&#39; kelimeleriyle arama motorlarında öne çıkan platformumuz, en güncel yabancı filmleri ve yabanı dizileri hızlı bir şekilde sizlere ulaştırır. Telif hakkı ihlali düşündüğünüz içerikler için lütfen iletişim sayfamızdan bizimle iletişime geçin.
+
+                </p>
+
+            </div>
+
+            <div class='footer-links'>
+
+                <a href='/'>Anasayfa</a>
+
+                <a href='/p/iletisim.html'>İletişim</a>
+
+                <a href='/p/dmca.html'>Telif Hakkı</a>
+ 
+                
+
+            </div>
+
+        </div>
+
+        <div class='copyright'>
+
+             <data:blog.title/> - Tüm Hakları Saklıdır.
+
+        </div>
+
+    </footer>
+
+
+
+    <script>
+
+    //<![CDATA[
+
+        // 1. Header Scroll
+
+        window.addEventListener('scroll', function() {
+
+            var header = document.getElementById('main-header');
+
+            if (window.scrollY > 50) header.classList.add('scrolled');
+
+            else header.classList.remove('scrolled');
+
+        });
+
+        
+
+        // 2. Mobile Menu
+
+        function toggleMenu() {
+
+            document.getElementById('nav-menu').classList.toggle('active');
+
+        }
+
+
+
+        // 3. Benzer İçerikler
+
+        window.addEventListener('load', function() {
+
+            var engine = document.getElementById('related-engine');
+
+            if(!engine) return;
+
+
+
+            var label = engine.getAttribute('data-label');
+
+            var encodedLabel = encodeURIComponent(label);
+
+            var feedUrl = '/feeds/posts/default/-/' + encodedLabel + '?alt=json&max-results=6';
+
+
+
+            fetch(feedUrl)
+
+            .then(res => res.json())
+
+            .then(data => {
+
+                var entries = data.feed.entry;
+
+                if(!entries || entries.length === 0) return;
+
+
+
+                var html = "";
+
+                var count = 0;
+
+                var cleanCurrentUrl = window.location.href.split('?')[0].split('#')[0];
+
+
+
+                for(var i=0; i<entries.length; i++){
+
+                    var entry = entries[i];
+
+                    
+
+                    var entryLink = "";
+
+                    for(var k=0; k<entry.link.length; k++){
+
+                        if(entry.link[k].rel == 'alternate'){ 
+
+                            entryLink = entry.link[k].href.split('?')[0].split('#')[0]; 
+
+                            break; 
+
+                        }
+
+                    }
+
+
+
+                    if(entryLink !== cleanCurrentUrl && count < 4){
+
+                        var title = entry.title.$t;
+
+                        var img = "https://via.placeholder.com/300x450?text=No+Img";
+
+
+
+                        if (entry.content && entry.content.$t) {
+
+                            var doc = new DOMParser().parseFromString(entry.content.$t, 'text/html');
+
+                            var firstImg = doc.querySelector('img');
+
+                            if(firstImg) {
+
+                                img = firstImg.src; 
+
+                            }
+
+                        }
+
+                        
+
+                        if(img.includes("placeholder") && entry.media$thumbnail) {
+
+                             img = entry.media$thumbnail.url.replace(/\/s[0-9]+(-c)?\//, '/w300-h450-c/');
+
+                        }
+
+
+
+                        html += `
+
+                        <div class="movie-card" onclick="window.location.href='${entryLink}'">
+
+                            <img class="poster-img" src="${img}" loading="lazy"/>
+
+                            <div class="play-icon"><i class="fas fa-play-circle"></i></div>
+
+                            <div class="card-info">
+
+                                <div class="card-title">${title}</div>
+
+                            </div>
+
+                            <a href="${entryLink}" style="position:absolute; inset:0; z-index:20;"></a>
+
+                        </div>`;
+
+                        count++;
+
+                    }
+
+                }
+
+
+
+                if(count > 0){
+
+                    document.getElementById('related-grid').innerHTML = html;
+
+                    engine.style.display = 'block';
+
+                }
+
+            })
+
+            .catch(err => { console.log(err); });
+
+        });
+
+
+
+        // --- CANLI ARAMA SCRIPTI (Düzeltildi) ---
+
+        document.addEventListener("DOMContentLoaded", function() {
+
+            var searchInput = document.getElementById('search-input-field');
+
+            var resultsBox = document.getElementById('live-search-results');
+
+            var typingTimer; 
+
+            var doneTypingInterval = 500; // Yarım saniye bekleme
+
+
+
+            if (searchInput && resultsBox) {
+
+                
+
+                // Kullanıcı yazarken
+
+                searchInput.addEventListener('keyup', function() {
+
+                    clearTimeout(typingTimer);
+
+                    if (searchInput.value.length > 2) {
+
+                        typingTimer = setTimeout(doLiveSearch, doneTypingInterval);
+
+                    } else {
+
+                        resultsBox.classList.remove('active');
+
+                    }
+
+                });
+
+
+
+                // Dışarı tıklayınca kapat
+
+                document.addEventListener('click', function(e) {
+
+                    if (!searchInput.contains(e.target) && !resultsBox.contains(e.target)) {
+
+                        resultsBox.classList.remove('active');
+
+                    }
+
+                });
+
+
+
+                function doLiveSearch() {
+
+                    var query = searchInput.value;
+
+                    resultsBox.innerHTML = '<div class="live-loading"><i class="fas fa-circle-notch fa-spin"></i> Aranıyor...</div>';
+
+                    resultsBox.classList.add('active');
+
+
+
+                    // Blogger JSON API
+
+                    fetch('/feeds/posts/default?alt=json&q=' + encodeURIComponent(query) + '&max-results=5')
+
+                    .then(function(response) { return response.json(); })
+
+                    .then(function(data) {
+
+                        var html = '';
+
+                        if (data.feed.entry) {
+
+                            data.feed.entry.forEach(function(entry) {
+
+                                var title = entry.title.$t;
+
+                                // Linki bul
+
+                                var link = '';
+
+                                for(var i=0; i<entry.link.length; i++) {
+
+                                    if(entry.link[i].rel == 'alternate') { link = entry.link[i].href; break; }
+
+                                }
+
+                                
+
+                                // Resmi bul
+
+                                var img = 'https://via.placeholder.com/40x60?text=NA';
+
+                                if (entry.media$thumbnail) {
+
+                                    img = entry.media$thumbnail.url.replace('s72-c', 'w100-h150-c'); 
+
+                                } else if(entry.content && entry.content.$t) {
+
+                                     var doc = new DOMParser().parseFromString(entry.content.$t, 'text/html');
+
+                                     var firstImg = doc.querySelector('img');
+
+                                     if(firstImg) img = firstImg.src;
+
+                                }
+
+
+
+                                // Kategori
+
+                                var cat = (entry.category && entry.category.length > 0) ? entry.category[0].term : 'Film';
+
+
+
+                                html += '<a href="' + link + '" class="live-item">';
+
+                                html += '<img src="' + img + '" class="live-thumb">';
+
+                                html += '<div class="live-info">';
+
+                                html += '<div class="live-title">' + title + '</div>';
+
+                                html += '<div class="live-meta">' + cat + '</div>';
+
+                                html += '</div></a>';
+
+                            });
+
+                        } else {
+
+                            html = '<div class="live-loading">Sonuç bulunamadı.</div>';
+
+                        }
+
+                        resultsBox.innerHTML = html;
+
+                    })
+
+                    .catch(function(err) {
+
+                        console.log(err);
+
+                        resultsBox.innerHTML = '<div class="live-loading">Hata oluştu.</div>';
+
+                    });
+
+                }
+
+            }
+
+        });
+
+
+
+    //]]>
+
+    </script>
+
+</body>
+
+</html>

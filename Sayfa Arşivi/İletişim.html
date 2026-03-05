@@ -1,0 +1,75 @@
+<style>
+  
+  .comments-area {display: none}
+  
+  .terminal-box {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    
+    /* GÜNCELLEME 1: Genişlik Ayarları */
+    width: 95%;          /* Ekranın %95'ini kaplar (Kenarlardan hafif boşluk kalır) */
+    max-width: 1000px;   /* Eskiden 600px idi, şimdi 1000px yaptık (daha geniş) */
+    margin: 20px auto;   /* Kutuyu sayfanın tam ortasına hizalar */
+    
+    overflow: hidden;
+    font-family: 'Courier New', Courier, monospace;
+    color: #d4d4d4;
+    box-sizing: border-box; /* Padding ekleyince kutunun şişmesini engeller */
+  }
+
+  .terminal-header {
+    background-color: #2d2d2d;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .red { background-color: #ff5f56; }
+  .yellow { background-color: #ffbd2e; }
+  .green { background-color: #27c93f; }
+
+  .terminal-body {
+    padding: 25px;
+    line-height: 1.6;
+    /* GÜNCELLEME 2: Uzun metinler için kaydırma */
+    overflow-x: auto; /* Eğer içindeki yazı çok uzunsa yana kaydırma çubuğu çıkarır */
+  }
+
+  .highlight { color: #569cd6; }
+
+  /* GÜNCELLEME 3: Mobil Uyumluluk (Telefonda Görünüm) */
+  @media (max-width: 600px) {
+    .terminal-box {
+      width: 100%;       /* Telefondaysak tam genişlik olsun */
+      margin: 10px 0;    /* Kenar boşluklarını azalt */
+      border-radius: 0;  /* Telefondan bakınca köşeler düzleşsin (isteğe bağlı) */
+    }
+    
+    .terminal-body {
+      padding: 15px;     /* Telefonda iç boşluğu azaltıp yer kazanalım */
+      font-size: 14px;   /* Yazıyı biraz küçültelim ki sığsın */
+    }
+  }
+</style>
+
+<div class="terminal-box">
+  <div class="terminal-header">
+    <div class="dot red"></div>
+    <div class="dot yellow"></div>
+    <div class="dot green"></div>
+  </div>
+  <div class="terminal-body">
+    <p>Mail Adresi: info.dizity@gmail.com
+Dizify adresinde yer alan bütün filmlerimizi ve dizilerimizi dışarıdan, farklı sunuculardan çekip Iframe kodlarıyla, yansıtma yöntemiyle sitemizde yayınlamaktayız. Sitemizde yer alan ilgili filmlere ait telif hakları bulunan kişi veya kurumlar, ilgili filmlerin sitemizden kaldınılmasını bize yukanda yer alan mail adresine gönderecekleri mail ile birlikte talep edebilirler. İlgili konu üzerine bulunulan talep sonrası maksimum üç iş günü içerisinde kaldırılması talep edilen filmler sitemizden kaldınlacaktır.
+Bu konu ile ilgili hukuki maddeler aşağıda yer almaktadır:
+MADDE 5
+(1) Yer sağlayıcı, yer sağladığı içeriği kontrol etmek veya hukuka aykırı bir faaliyetin söz konusu olup olmadığını araştırmakla yükümlü değildir.
+(2) Yer sağlayıcı yer sağladığı hukuka aykırı içerikten, ceza sorumluluğu ile ilgili hükümler saklı kalmak kaydıyla, bu Kanunun 8 inci ve 9 uncu maddelerine göre haberdar edilmesi halinde ve teknik olarak imkan bulunduğu ölçüde hukuka aykırı içeriği yayından kaldırmakla yükümlüdür.
+English translation:
+All the videos that are involved in our website are added from general video websites like vkcom, mailru, okru etc. For productions whose copyright belongs to you, as long as you make a notice to info.dizify@gmail.com email address, relevant production will be removed in 3 workday from our.
+    </p>
+  </div>
+</div>
