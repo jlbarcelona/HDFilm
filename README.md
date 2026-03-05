@@ -47,6 +47,18 @@ HDFilm, temiz kod standartlarına (Clean Code) uygun olarak geliştirilmiştir. 
 ### 1. Dinamik Filtreleme Mantığı (`app.js`)
 Kullanıcıların filmleri türlerine göre saniyeler içinde filtrelemesini sağlayan, `data-category` niteliklerini kullanan hafif JS motoru.
 
+---
+
+## ☕ Destek Ol
+
+Bu projeyi faydalı bulduysanız ve geliştirmeye devam etmeme destek olmak isterseniz:
+
+* [GitHub Üzerinden Sponsor Ol](https://github.com/sponsors/alisemi0)
+* [Patreon'da Destekçi Ol](https://www.patreon.com/cw/AliSemi/membership)
+
+---
+
+
 ```javascript
 const filterButtons = document.querySelectorAll('.filter-btn');
 const movieCards = document.querySelectorAll('.movie-card');
