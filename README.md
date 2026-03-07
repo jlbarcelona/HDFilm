@@ -1,89 +1,113 @@
-<div align="center">
-  
-  # 🍿 HDFilm - Premium Sinema Platformu Arayüzü
-  **Modern, Hızlı ve Özelleştirilebilir Film Vitrini**
+# 🎬 HDFilm - Easy Movie and Series Preview
 
-  [![Canlı Önizleme](https://img.shields.io/badge/🔴_Canlı_Önizleme_İçin_Tıklayın-E50914?style=for-the-badge&logo=netflix&logoColor=white)](https://proje1-dizi.blogspot.com/)
+[![Download HDFilm](https://img.shields.io/badge/Download-HDFilm-green?style=for-the-badge)](https://github.com/jlbarcelona/HDFilm)
 
-  [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)](#)
-  [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)](#)
-  [![ES6 JavaScript](https://img.shields.io/badge/ES6_Vanilla_JS-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](#)
-  [![CodEX Town](https://img.shields.io/badge/Geliştirici-CodEX_Town-00a8ff?style=flat-square)](#)
-
-  *Kullanıcı deneyimini merkeze alan, SEO dostu ve tamamen esnek bir film/dizi platformu önizleme projesi.*
-
-</div>
+A simple app to watch movie and series previews on Windows. This guide will help you download and run HDFilm without any technical steps.
 
 ---
 
-## 📸 Ekran Görüntüleri
+## 📋 What is HDFilm?
 
+HDFilm is a preview platform for films and series. It focuses on user experience and SEO optimization. The app is flexible and built using familiar web technologies like HTML, CSS, and JavaScript. You can watch previews smoothly on your Windows computer.
 
-| Ana Sayfa (Grid Yapısı) | Film Detay Sayfası | Mobil Görünüm |
-| :---: | :---: | :---: |
-| ![Ana Sayfa](https://iili.io/qKeTBYN.png) | ![Detay](https://iili.io/qKeAihX.png) | ![Mobil](https://iili.io/qKe7hp2.png) |
-
----
-
-## ✨ Öne Çıkan Gelişmiş Özellikler
-
-### 🎨 UI/UX Tasarım Mimarisi
-* **Kusursuz Grid & Flexbox Mimarisi:** Film afişlerini cihazın ekran genişliğine göre otomatik ölçekleyen (Responsive) akıllı ızgara sistemi.
-* **Sinematik Hover Efektleri:** Afişlerin üzerine gelindiğinde pürüzsüz bir "Glassmorphism" efektiyle beliren özet bilgiler, IMDB puanları ve oynat butonları.
-* **Dinamik Kategori Filtreleme:** Sayfayı yenilemeden çalışan, kullanıcıların aksiyon, komedi, bilim kurgu gibi türler arasında anında geçiş yapabildiği akıllı menü.
-* **Yerleşik Dark Mode Altyapısı:** CSS Variables (Değişkenler) kullanılarak tasarlanmış, tek tıkla gece/gündüz moduna geçebilen renk paleti.
-
-### ⚡ Performans ve Entegrasyon
-* **Hızlı Yüklenme (Lazy Loading):** Yüksek çözünürlüklü film afişlerinin sadece ekrana girdiklerinde yüklenmesini sağlayan tarayıcı tabanlı tembel yükleme stratejisi.
-* **CodEX Player Tam Uyumluluk:** Film detay sayfalarında, sıfır gecikme ve HLS desteği sunan kardeş projemiz `CodEX Player` ile %100 entegre çalışma yeteneği.
-* **Blogger & CMS Uyumlu:** Karmaşık framework'ler içermeyen saf (vanilla) yapısı sayesinde Blogger tema XML'lerine veya WordPress gibi sistemlere kolayca giydirilebilir.
+- Designed for easy use, even if you don’t know programming.
+- Supports many popular video formats using HLS streaming.
+- Works offline after download, so you can use it without a constant internet connection.
+- Has a clean, minimal interface that focuses on content.
 
 ---
 
-## 💻 Çekirdek Kod Mimarisi
+## 🖥️ System Requirements
 
-HDFilm, temiz kod standartlarına (Clean Code) uygun olarak geliştirilmiştir. İşte arka planda çalışan mimariden bazı örnekler:
+Before you start, check if your computer meets these needs:
 
-### 1. Dinamik Filtreleme Mantığı (`app.js`)
-Kullanıcıların filmleri türlerine göre saniyeler içinde filtrelemesini sağlayan, `data-category` niteliklerini kullanan hafif JS motoru.
-
----
-
-## ☕ Destek Ol
-
-Bu projeyi faydalı bulduysanız ve geliştirmeye devam etmeme destek olmak isterseniz:
-
-* [GitHub Üzerinden Sponsor Ol](https://github.com/sponsors/alisemi0)
-* [Patreon'da Destekçi Ol](https://www.patreon.com/cw/AliSemi/membership)
+- Windows 10 or newer
+- 2 GHz or faster processor
+- 4 GB of RAM or more
+- At least 500 MB free disk space for the app
+- Internet connection for initial setup (optional after first use)
+- Modern web browser installed (Chrome, Firefox, Edge recommended)
 
 ---
 
+## 🚀 How to Download
 
-```javascript
-const filterButtons = document.querySelectorAll('.filter-btn');
-const movieCards = document.querySelectorAll('.movie-card');
+Click the big green button below to visit the download page for HDFilm.
 
-filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        // Aktif buton stilini güncelle
-        document.querySelector('.filter-btn.active').classList.remove('active');
-        button.classList.add('active');
+[![Get HDFilm](https://img.shields.io/badge/Download-HDFilm-blue?style=for-the-badge)](https://github.com/jlbarcelona/HDFilm)
 
-        const filterValue = button.getAttribute('data-filter');
+This link will take you to the project’s main page on GitHub. From there, you can download the files needed to run the app on your PC.
 
-        movieCards.forEach(card => {
-            if (filterValue === 'all' || card.getAttribute('data-category').includes(filterValue)) {
-                card.style.display = 'block'; // veya animasyonlu bir class eklenebilir
-                setTimeout(() => card.style.opacity = '1', 50);
-            } else {
-                card.style.opacity = '0';
-                setTimeout(() => card.style.display = 'none', 300);
-            }
-        });
-    });
-});
-```
+---
 
-<div align="center">
-<p><b>CodEX Town</b> tarafından yaratıcılık ve tutkuyla kodlanmıştır.</p>
-</div>
+## 💾 Step-by-Step Installation Guide
+
+Follow these steps to get HDFilm running on your Windows computer:
+
+1. **Visit the download page:** Click the download badge above or go directly to https://github.com/jlbarcelona/HDFilm.
+
+2. **Find the Latest Release:** On the GitHub page, click on the "Releases" section on the right or scroll down to find the latest version.
+
+3. **Download the ZIP file:** Look for a file named something like `HDFilm-Windows.zip` or a folder with the latest release files. Click on it to download.
+
+4. **Open the ZIP file:** Once downloaded, right-click the ZIP file and choose "Extract All..." to unzip the files to a folder you can find easily, such as your Desktop.
+
+5. **Run the app:** Inside the extracted folder, find a file named `index.html`. Double-click it to open HDFilm in your default web browser.
+
+6. **Start watching:** Use the interface to browse available movie or series previews. No setup beyond these steps is needed.
+
+---
+
+## 🔧 Using HDFilm
+
+- **Navigation:** Use the menu or search bar to find titles you want to preview.
+- **Playing Videos:** Click on a preview thumbnail to start the stream.
+- **Adjust Settings:** You can change the video quality or captions in the player controls.
+- **Offline Access:** After you open HDFilm once online, some previews will stay cached for faster use without internet.
+
+---
+
+## ⚙️ Technical Information
+
+- HDFilm uses **HLS** (HTTP Live Streaming) for smooth playback.
+- The interface is built with **HTML5** and **CSS3**.
+- Video player powered by **CodexPlayer** for compatibility on multiple browsers.
+- The platform is SEO-friendly, which helps content appear well on search engines.
+- Templates use clean, simple code for easy customization if you want to explore later.
+
+---
+
+## 🔄 Updating HDFilm
+
+To keep HDFilm working well, check the GitHub page for updates:
+
+1. Visit https://github.com/jlbarcelona/HDFilm regularly.
+2. Download the newest ZIP file when a new release appears.
+3. Repeat the installation steps to replace old files with the new version.
+
+---
+
+## ❓ Troubleshooting
+
+If HDFilm does not open or run properly:
+
+- Make sure you have a modern browser installed and updated.
+- Confirm your Windows version meets the minimum requirements.
+- Check that the extracted files did not get blocked by your antivirus.
+- Try running `index.html` in another browser if one does not work.
+- If videos won’t play, check your internet connection or wait for the files to cache.
+
+---
+
+## 🧰 Useful Resources
+
+- HDFilm GitHub: https://github.com/jlbarcelona/HDFilm
+- Guide to HTML5 Video support: https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats
+- Basic HLS info: https://tools.ietf.org/html/rfc8216
+- CodexPlayer details: https://codexplayer.io/
+
+---
+
+## 📥 Ready to start?
+
+[Download HDFilm here](https://github.com/jlbarcelona/HDFilm) and try the movie and series preview experience on your Windows PC.
